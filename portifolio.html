@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Portfolio | Alex Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#fbf7ff",
+              "on-background": "#2a3439",
+              "primary-dim": "#005397",
+              "surface-dim": "#cfdce3",
+              "secondary": "#526074",
+              "tertiary": "#5d5c78",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary": "#f8f8ff",
+              "on-tertiary-container": "#4a4a65",
+              "on-primary": "#f6f7ff",
+              "error-container": "#fe8983",
+              "secondary-fixed": "#d5e3fc",
+              "primary-fixed-dim": "#bcd6ff",
+              "on-secondary-container": "#455367",
+              "secondary-fixed-dim": "#c7d5ed",
+              "tertiary-dim": "#515151",
+              "on-surface-variant": "#566166",
+              "background": "#f7f9fb",
+              "on-primary-fixed-variant": "#005da7",
+              "on-primary-fixed": "#004077",
+              "on-primary-container": "#005396",
+              "primary-fixed": "#d4e3ff",
+              "error": "#9f403d",
+              "surface-bright": "#f7f9fb",
+              "on-error-container": "#752121",
+              "on-secondary-fixed-variant": "#4e5c71",
+              "error-dim": "#4e0309",
+              "on-secondary-fixed": "#324053",
+              "surface-container-low": "#f0f4f7",
+              "surface-tint": "#0060ac",
+              "tertiary-fixed-dim": "#cbc9e9",
+              "on-tertiary-fixed": "#383751",
+              "tertiary-fixed": "#d9d7f8",
+              "surface-variant": "#d9e4ea",
+              "on-error": "#fff7f6",
+              "primary": "#0060ac",
+              "surface-container-highest": "#d9e4ea",
+              "secondary-dim": "#465468",
+              "outline": "#717c82",
+              "on-surface": "#2a3439",
+              "inverse-on-surface": "#9a9d9f",
+              "secondary-container": "#d5e3fc",
+              "on-tertiary-fixed-variant": "#54546f",
+              "primary-container": "#d4e3ff",
+              "inverse-primary": "#499dfd",
+              "outline-variant": "#a9b4b9",
+              "surface-container": "#e8eff3",
+              "surface-container-high": "#e1e9ee",
+              "surface": "#f7f9fb",
+              "tertiary-container": "#d9d7f8",
+              "inverse-surface": "#0b0f10"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #f7f9fb;
+      }
+      .dark body {
+        background-color: #0f172a;
+      }
+    </style>
+</head>
+<body class="font-body text-on-surface dark:text-slate-200 selection:bg-primary-container transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#f7f9fb]/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<div class="font-['Manrope'] tracking-tight text-xl font-bold text-[#2a3439] dark:text-slate-100">
+                Precision Portfolio
+            </div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#005FB8] dark:text-blue-400 font-semibold hover:text-[#005FB8] transition-colors" href="#">Portfolio</a>
+<a class="text-[#566166] dark:text-slate-400 hover:text-[#005FB8] transition-colors" href="#">Resources</a>
+<a class="text-[#566166] dark:text-slate-400 hover:text-[#005FB8] transition-colors" href="#">Case Studies</a>
+</nav>
+<div class="flex items-center gap-4">
+<!-- Theme Toggle -->
+<button aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-surface-container transition-colors dark:hover:bg-slate-800" id="theme-toggle">
+<span class="material-symbols-outlined block dark:hidden text-on-surface-variant">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-slate-400">light_mode</span>
+</button>
+<span class="material-symbols-outlined text-on-surface-variant dark:text-slate-400 cursor-pointer hover:text-primary transition-all">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant dark:text-slate-400 cursor-pointer hover:text-primary transition-all">settings</span>
+<img class="w-8 h-8 rounded-full border border-outline-variant/30" data-alt="close up professional headshot of a data analyst with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmwwaeg8cN0866drzf8HsF1Bkt6xhO1BGeD-bUQ3G5uaP2E0XRLt4O_RvKktiOTBKwsqprCPbsmeG_0OldXCe_tkXyIeEt1-pB3k-MovcFEJ4C8cWYIk4raMv-pxq8hplTQoCl6Hhh_G2v9nkgoazxin84UWDjhVKCoVrz0FPqVRPPZvFAjAMH6VqHY5w_R7oiMAyM1y8GENPgtvw_g3s-jfYrGaeoBGrTcd2bXQ9hdYjVUodycLbjTL6k1sXZgn3-RP8JTYO3yNo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-72 fixed left-0 top-0 border-r border-slate-200/50 dark:border-slate-800/50 bg-[#f7f9fb]/80 dark:bg-slate-900/80 backdrop-blur-xl flex flex-col gap-6 p-6 z-40 hidden md:flex transition-colors duration-300">
+<div class="mt-16 mb-4 flex flex-col items-center text-center px-2">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-4 ring-surface-container dark:ring-slate-800 shadow-lg">
+<img class="w-full h-full object-cover" data-alt="minimalist professional portrait of a data architect wearing glasses against a soft blue gradient background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP9uL_J19cOXWLhVCQyHZT965-FYvV62IAgD1ozdOzlWczAxR0Ft_g05AH_qrMgdTeA2BM7MlaFMeE9s_KTL_XZyrAJcT9V94np3e6bEHEfo8zNn8q9-42FGhvzpMeLenU8sya4F1V5T2uudzlBHTq-3dj0_2iOQKaIKM9vWXWHTMxK5gvj1jECgY_R2-JUPGvWPWr3wwAkSW_ZJ0suHx7PhVAlppzl-BALW62aw1eGbhCqH4knL_MyCLsXOc_ZLTmONkMuETD8rI"/>
+</div>
+<h1 class="font-['Manrope'] font-extrabold text-[#005FB8] dark:text-blue-400 text-xl">Alex Precision</h1>
+<p class="text-xs text-on-surface-variant dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Data Architect &amp; Insight Curator</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="bg-blue-50 dark:bg-blue-900/30 text-[#005FB8] dark:text-blue-300 font-medium rounded-lg px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+                Portfolio
+            </a>
+<a class="text-[#566166] dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+                About Me
+            </a>
+<a class="text-[#566166] dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+                Contact
+            </a>
+</nav>
+<div class="px-2">
+<button class="w-full bg-gradient-to-br from-primary to-primary-dim text-on-primary rounded-full py-3 font-semibold text-sm shadow-md hover:shadow-lg transition-shadow">
+                Download CV
+            </button>
+</div>
+<div class="mt-auto flex flex-col gap-2 border-t border-outline-variant/20 dark:border-slate-800 pt-6">
+<a class="text-[#566166] dark:text-slate-400 flex items-center gap-3 px-4 py-2 hover:text-primary transition-colors text-sm" href="#">
+<span class="material-symbols-outlined">code</span>
+                GitHub
+            </a>
+<a class="text-[#566166] dark:text-slate-400 flex items-center gap-3 px-4 py-2 hover:text-primary transition-colors text-sm" href="#">
+<span class="material-symbols-outlined">share</span>
+                LinkedIn
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-28 px-8 pb-12 min-h-screen transition-colors duration-300">
+<!-- Hero/Intro Section -->
+<section class="max-w-6xl mx-auto mb-16">
+<span class="text-primary dark:text-blue-400 font-bold tracking-widest text-xs uppercase mb-4 block">Selected Works</span>
+<h2 class="font-headline text-5xl font-extrabold text-on-surface dark:text-slate-100 tracking-tight mb-6 leading-tight">
+                Refining complex data into <br/><span class="text-primary dark:text-blue-400">editorial insights.</span>
+</h2>
+<div class="max-w-2xl bg-surface-container-highest/30 dark:bg-slate-800/50 p-6 rounded-xl border-l-4 border-primary dark:border-blue-500">
+<p class="text-on-surface-variant dark:text-slate-300 leading-relaxed font-body">
+                    I architect data pipelines and visualization suites that don't just display numbers—they tell the story of the business. My process bridges the gap between raw Python logic and executive-level clarity.
+                </p>
+</div>
+</section>
+<!-- Project Gallery -->
+<section class="max-w-6xl mx-auto space-y-20">
+<!-- Project Pair 1 -->
+<div class="space-y-6">
+<div class="flex items-end justify-between border-b border-outline-variant/10 dark:border-slate-800 pb-4">
+<h3 class="font-headline text-2xl font-bold text-on-surface dark:text-slate-100">Sales Forecasting Analysis</h3>
+<div class="flex gap-2">
+<span class="bg-secondary-container dark:bg-slate-700 text-on-secondary-container dark:text-slate-200 px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-tighter">Python</span>
+<span class="bg-secondary-container dark:bg-slate-700 text-on-secondary-container dark:text-slate-200 px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-tighter">Prophet</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- GitHub Card -->
+<div class="group relative bg-surface-container-lowest dark:bg-slate-900 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 border border-transparent dark:border-slate-800">
+<div class="h-64 bg-surface-container dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="clean dark mode code editor showing structured Python script for time series forecasting with clear comments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC85ZA4IEltIxBSqAqL5T7iJi_Y35MjPWltdanw24TXg2KKGtWQL7qJzJh29ipnZpZYBo2L1iSf5Ym1j00Q9q2LGdBMNwz3t_RI3tgCghDmWQWWj8Ft2esI81bkzZ77-jBY9iOtHHsYkYLh3y-5VuTpaq2f6HZLfWAyfSHRURSCzeJ3JkWRXmQ7zBmdLDBGVJQTHF4vTDqRZTOYBfOSa3iR0J1mabflM55Iig4RNy0s8wGFxcn5mrKZyIWMAV8iQjbjwzkGydtXciE"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2 text-primary dark:text-blue-400">
+<span class="material-symbols-outlined text-sm">code</span>
+<span class="text-xs font-bold uppercase tracking-widest">Git Repository</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2 dark:text-slate-100">GitHub Data Prep</h4>
+<p class="text-on-surface-variant dark:text-slate-400 text-sm mb-6 leading-relaxed">End-to-end pipeline for seasonal decomposition and outlier detection using automated feature engineering.</p>
+<a class="inline-flex items-center gap-2 text-primary dark:text-blue-400 text-sm font-semibold group/link" href="#">
+                                View Source <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Live Dashboard Card -->
+<div class="group relative bg-surface-container-lowest dark:bg-slate-900 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 border border-primary/10 dark:border-blue-500/20">
+<div class="h-64 bg-surface-container-high dark:bg-slate-800 overflow-hidden flex items-center justify-center p-4">
+<img class="w-full h-full object-contain rounded-lg shadow-sm transition-transform group-hover:scale-105" data-alt="modern data dashboard with clean blue and white aesthetics featuring sales trends and geographical distribution maps" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv7WspAi_l6W_j5P93GELDlgsxFlu0FHmc_T2XaktJCyMCPPCpsw4H1GL-XPmhoZo1ul5rL49cNa00U4K7SveS65ALj9VckNI8dc12NcGj7OAFymNqraxR2v6JsLbYrjtSV5QlcgAe-PIE3N3TjTFCvJfwI5DHneSzEr9rQeF2P2BpexC88Enpj7YPFNMjD52G17ZiUjebZ3K5KMzuGIJPCvBa7SoaF6PZJ-oJWuB6-PqPjIuOBc0JmWUJKccYIFrVMtuiUs0nWIk"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2 text-[#00a86b] dark:text-emerald-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="text-xs font-bold uppercase tracking-widest">Live Application</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2 dark:text-slate-100">Live Dashboard</h4>
+<p class="text-on-surface-variant dark:text-slate-400 text-sm mb-6 leading-relaxed">Interactive executive dashboard providing real-time drill-downs into regional performance and forecast intervals.</p>
+<a class="inline-flex items-center gap-2 text-primary dark:text-blue-400 text-sm font-semibold group/link" href="#">
+                                Launch Interactive <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Pair 2 -->
+<div class="space-y-6">
+<div class="flex items-end justify-between border-b border-outline-variant/10 dark:border-slate-800 pb-4">
+<h3 class="font-headline text-2xl font-bold text-on-surface dark:text-slate-100">Customer Sentiment Engine</h3>
+<div class="flex gap-2">
+<span class="bg-secondary-container dark:bg-slate-700 text-on-secondary-container dark:text-slate-200 px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-tighter">NLP</span>
+<span class="bg-secondary-container dark:bg-slate-700 text-on-secondary-container dark:text-slate-200 px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-tighter">Transformers</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- GitHub Card -->
+<div class="group relative bg-surface-container-lowest dark:bg-slate-900 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 border border-transparent dark:border-slate-800">
+<div class="h-64 bg-surface-container dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="schematic diagram showing natural language processing pipeline steps from text cleaning to sentiment score output" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVQ4B3JWMN5xzUPLfQ-wBolZxKJ2pGyKtqAENrKuWIxAdzhC9fmY9VCfb7CWrz4mn-A9rxWGiNg0LPx7tK05n07lU-pvNyPqAnQVWESI2gv9d3S3SVr6Xf_QbdUCR7RkQACLl2dSZ1deVaBqhLtNn353s5ew67-a30geW06D58FmSXjfbZCUcPfugltew-pJ-qhdiWeg8wV951JioZfdU8mH_YJEghHfruEuq_RTa_TqNnIQ8NFYr63goxSIWIeqNS8tzIzdeGjhg"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2 text-primary dark:text-blue-400">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span class="text-xs font-bold uppercase tracking-widest">Logic &amp; Scraping</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2 dark:text-slate-100">Model Architecture</h4>
+<p class="text-on-surface-variant dark:text-slate-400 text-sm mb-6 leading-relaxed">Fine-tuned BERT model for multi-class classification of user reviews across 4 distinct product categories.</p>
+<a class="inline-flex items-center gap-2 text-primary dark:text-blue-400 text-sm font-semibold group/link" href="#">
+                                Documentation <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Live Dashboard Card -->
+<div class="group relative bg-surface-container-lowest dark:bg-slate-900 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 border border-primary/10 dark:border-blue-500/20">
+<div class="h-64 bg-surface-container-high dark:bg-slate-800 overflow-hidden flex items-center justify-center p-8">
+<img class="w-full h-full object-contain rounded-lg shadow-sm transition-transform group-hover:scale-105" data-alt="visual display of word clouds and emotional heatmaps in a sleek data visualization interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaxVealwMnH2RdhgulSB8lNutp9PMTUIKjOPSoJvzhd_vYToU0hXuGJ3wEnb0BAZD06QJGQqfebnl3982lRDyxsBXQT7K1rOXVrHyuhvsb_F3mUKsP7TOeKS8TseQaNKlgE4tth6Uoj8r0Cct_WLY6o2fmBCth4hZrWjqU2Qot6JEch1aCOUyCV6bB4g16iaDYiUTQqyrJVRAwbzslc9LXf1xDJhXQ3GTf7llKUSbi1_cWuwyBcJKUDdwVGgMiDEY5rzeNwWTf6bw"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2 text-[#00a86b] dark:text-emerald-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="text-xs font-bold uppercase tracking-widest">Sentiment Suite</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2 dark:text-slate-100">Insight Panel</h4>
+<p class="text-on-surface-variant dark:text-slate-400 text-sm mb-6 leading-relaxed">Visualizing emotional trends and word-cloud frequency to drive marketing strategy pivots.</p>
+<a class="inline-flex items-center gap-2 text-primary dark:text-blue-400 text-sm font-semibold group/link" href="#">
+                                Explore Insights <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-[#cfdce3] dark:bg-slate-950 flex flex-col items-center justify-center gap-4 md:ml-72 transition-colors duration-300">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-[#566166] dark:text-slate-500">
+            © 2024 The Precision Curator • Built with Editorial Integrity
+        </p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#566166] dark:text-slate-500 hover:text-[#2a3439] dark:hover:text-slate-200 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#566166] dark:text-slate-500 hover:text-[#2a3439] dark:hover:text-slate-200 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<div class="md:hidden fixed bottom-0 w-full bg-[#f7f9fb]/90 dark:bg-slate-900/90 backdrop-blur-xl flex justify-around items-center p-4 border-t border-outline-variant/20 dark:border-slate-800 z-50">
+<span class="material-symbols-outlined text-primary dark:text-blue-400" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="material-symbols-outlined text-on-surface-variant dark:text-slate-400">person</span>
+<span class="material-symbols-outlined text-on-surface-variant dark:text-slate-400">alternate_email</span>
+</div>
+<script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or default to light
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body></html>
