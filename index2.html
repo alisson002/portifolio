@@ -4,456 +4,127 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Portfólio | Alisson Moreira - Analista de Dados</title>
+    <meta name="description" content="Portfólio de Alisson Moreira, analista de dados: projetos em Python, Pandas e SQL com dashboards interativos em Streamlit."/>
+    <meta property="og:title" content="Alisson Moreira — Analista de Dados"/>
+    <meta property="og:description" content="Projetos de análise de dados com Python, Pandas, SQL e dashboards interativos."/>
+    <meta property="og:image" content="https://alisson002.github.io/portifolio/alisson.jpeg"/>
+    <meta property="og:url" content="https://alisson002.github.io/portifolio/"/>
+    <meta property="og:type" content="website"/>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"/>
+    <script>
+        // Aplica o tema salvo antes da primeira pintura (evita "flash")
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.replace('light', 'dark');
+            }
+        } catch (e) { /* localStorage indisponível (modo privado etc.) */ }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <style>
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #2a3439;
-            background-color: #F8FAFC;
-            transition: background-color 0.4s, color 0.4s;
-            overflow: hidden;
-            height: 100vh;
-        }
-        .dark body { background-color: #06101b; color: #e2e8f0; }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        /* ========== SIDEBAR ========== */
-        aside {
-            height: 100vh;
-            width: 280px;
-            position: fixed;
-            left: 0; top: 0;
-            background: #06101b;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 1.5rem 1.5rem;
-            z-index: 40;
-            overflow-y: auto;
-            transition: transform 0.3s;
-        }
-
-        /* -- Perfil -- */
-        .sidebar-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        .sidebar-photo {
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #0077D4;
-            box-shadow: 0 4px 20px rgba(0,119,212,0.3);
-            margin-bottom: 1rem;
-        }
-        .sidebar-name {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #0077D4;
-        }
-        .sidebar-role {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 0.25rem;
-        }
-
-        /* -- Sidebar nav -- */
-        aside hr {
-            border: none;
-            border-top: 1px solid #1e293b;
-            margin: 1rem 0;
-        }
-        .sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-        .sidebar-nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 0.65rem 1rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .sidebar-nav a:hover { background: rgba(0,119,212,0.1); color: #e2e8f0; }
-        .sidebar-nav a.active {
-            background: rgba(0,119,212,0.15);
-            color: #7cc4ff;
-            font-weight: 600;
-        }
-        .sidebar-nav a .material-symbols-outlined { font-size: 1.2rem; }
-
-        /* -- Sidebar bottom links -- */
-        .sidebar-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            border-top: 1px solid #1e293b;
-            padding-top: 1rem;
-            margin-top: auto;
-        }
-        .sidebar-bottom a,
-        .sidebar-bottom .copy-email-btn {
-            color: #94a3b8;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-family: inherit;
-            width: 100%;
-            position: relative;
-        }
-        .sidebar-bottom a:hover,
-        .sidebar-bottom .copy-email-btn:hover {
-            color: #0077D4;
-            background: rgba(0,119,212,0.08);
-        }
-        .sidebar-bottom .material-symbols-outlined { font-size: 1.1rem; }
-
-        /* -- Copy badge -- */
-        .copy-badge {
-            position: absolute;
-            top: -6px; right: 8px;
-            background: #059669;
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: all 0.3s;
-            pointer-events: none;
-        }
-        .copy-badge.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========== MAIN CONTENT ========== */
-        main {
-            margin-left: 280px;
-            padding: 2.5rem 3rem 3rem;
-            height: 100vh;
-            overflow-y: auto;
-            transition: background-color 0.4s;
-        }
-
-        /* ========== PROJECT SECTION ========== */
-        .project { margin-bottom: 3rem; }
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-        .dark .project-header { border-color: #1e293b; }
-
-        .project-title {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #06101b;
-        }
-        .dark .project-title { color: #f1f5f9; }
-
-        .project-tags { display: flex; gap: 0.5rem; }
-        .tag {
-            background: #e2e8f0;
-            color: #475569;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .dark .tag { background: #1e293b; color: #94a3b8; }
-
-        /* ========== CARD GRID ========== */
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            align-items: stretch;
-        }
-
-        .card-wrapper {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-        }
-        .card-wrapper:hover { text-decoration: none; }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            transform: translateY(-4px);
-        }
-        .dark .card {
-            background: #0f1d32;
-            border-color: #1e293b;
-        }
-        .dark .card:hover {
-            box-shadow: 0 8px 30px rgba(0,119,212,0.1);
-        }
-        .card.dash-card { border-color: rgba(0,119,212,0.15); }
-        .dark .card.dash-card { border-color: rgba(0,119,212,0.25); }
-
-        .card-preview {
-            width: 100%; height: 200px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3rem;
-        }
-
-        .card-body {
-            padding: 1.25rem 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.4rem;
-        }
-        .card-label.repo { color: #0077D4; }
-        .card-label.dash { color: #059669; }
-
-        .card-name {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #06101b;
-            margin-bottom: 0.5rem;
-        }
-        .dark .card-name { color: #f1f5f9; }
-
-        .card-desc {
-            font-size: 0.85rem;
-            color: #757491;
-            line-height: 1.6;
-            flex: 1;
-        }
-        .dark .card-desc { color: #94a3b8; }
-
-        .card-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #0077D4;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            text-decoration: none;
-        }
-        .card-action .material-symbols-outlined {
-            font-size: 1rem;
-            transition: transform 0.2s;
-        }
-        .card-wrapper:hover .card-action .material-symbols-outlined {
-            transform: translateX(4px);
-        }
-
-        /* ========== FOOTER ========== */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid #e2e8f0;
-            color: #757491;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-        .dark footer { border-color: #1e293b; color: #64748b; }
-
-        /* ========== THEME TOGGLE (top-right) ========== */
-        .theme-toggle {
-            position: fixed;
-            top: 1.25rem; right: 1.5rem;
-            z-index: 50;
-            background: #e2e8f0;
-            border: none;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .dark .theme-toggle { background: #1e293b; }
-        .theme-toggle .material-symbols-outlined { color: #475569; font-size: 1.3rem; }
-        .dark .theme-toggle .material-symbols-outlined { color: #94a3b8; }
-
-        .theme-toggle .icon-light { display: none; }
-        .dark .theme-toggle .icon-dark { display: none; }
-        .dark .theme-toggle .icon-light { display: block; }
-
-        /* ========== MOBILE HAMBURGER ========== */
-        .hamburger {
-            display: none;
-            position: fixed;
-            top: 1.25rem; left: 1rem;
-            z-index: 60;
-            background: #0077D4;
-            border: none;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .hamburger .material-symbols-outlined { color: #fff; font-size: 1.5rem; }
-
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 35;
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 900px) {
-            .card-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            aside { transform: translateX(-100%); }
-            aside.open { transform: translateX(0); }
-            .sidebar-overlay.open { display: block; }
-            .hamburger { display: flex; }
-            main { margin-left: 0; padding: 4.5rem 1.25rem 2rem; }
-        }
-    </style>
+    <link href="assets/style.css" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
-        <span class="material-symbols-outlined icon-dark">dark_mode</span>
-        <span class="material-symbols-outlined icon-light">light_mode</span>
-    </button>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <!-- Mobile Hamburger -->
-    <button class="hamburger" id="hamburger">
-        <span class="material-symbols-outlined">menu</span>
+    <!-- Menu mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
     </button>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- Sidebar -->
     <aside id="sidebar">
         <div class="sidebar-profile">
-            <img class="sidebar-photo" src="alisson.jpeg" alt="Alisson Moreira"/>
+            <img class="sidebar-photo" src="alisson.jpeg" alt="Foto de Alisson Moreira"/>
             <h1 class="sidebar-name">Alisson Moreira</h1>
             <p class="sidebar-role">Analista de Dados</p>
         </div>
 
         <hr/>
 
-        <nav class="sidebar-nav">
-            <a href="index.html" class="active">
-                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">grid_view</span>
+        <nav class="sidebar-nav" aria-label="Navegação principal">
+            <a href="index.html" class="active" aria-current="page">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;" aria-hidden="true">grid_view</span>
                 Portfólio
             </a>
             <a href="sobre.html">
-                <span class="material-symbols-outlined">person</span>
+                <span class="material-symbols-outlined" aria-hidden="true">person</span>
                 Sobre Mim
             </a>
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="https://github.com/alisson002" target="_blank">
-                <span class="material-symbols-outlined">code</span>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+                <span class="material-symbols-outlined icon-dark" aria-hidden="true">dark_mode</span>
+                <span class="material-symbols-outlined icon-light" aria-hidden="true">light_mode</span>
+                <span class="icon-dark">Tema escuro</span>
+                <span class="icon-light">Tema claro</span>
+            </button>
+            <a href="https://github.com/alisson002" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                 GitHub
             </a>
-            <a href="https://linkedin.com/in/seu-perfil" target="_blank">
-                <span class="material-symbols-outlined">share</span>
+            <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
                 LinkedIn
             </a>
-            <button class="copy-email-btn" id="copy-email" type="button">
-                <span class="material-symbols-outlined">mail</span>
+            <button class="copy-email-btn" type="button" data-copy-email="am.analistadedados@gmail.com">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                 am.analistadedados@gmail.com
-                <span class="copy-badge" id="copy-badge">Copiado!</span>
+                <span class="copy-badge">Copiado!</span>
             </button>
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main>
-        <!-- ===== Projeto 1 ===== -->
-        <div class="project">
+    <!-- Conteúdo -->
+    <main id="conteudo">
+        <!-- ===== Projeto 1: Vendas (em desenvolvimento) ===== -->
+        <section class="project reveal">
             <div class="project-header">
-                <h3 class="project-title">Analise de Vendas - Forecasting</h3>
+                <h3 class="project-title">Análise de Vendas — Forecasting</h3>
                 <div class="project-tags">
                     <span class="tag">Python</span>
                     <span class="tag">Pandas</span>
                 </div>
             </div>
             <div class="card-grid">
-                <a class="card-wrapper" href="https://github.com/seu-usuario/projeto-vendas" target="_blank">
+                <div class="card-wrapper">
                     <div class="card">
-                        <div class="card-preview" style="background:#e8f0fe;">💻</div>
+                        <div class="card-preview placeholder">
+                            <span class="material-symbols-outlined" aria-hidden="true">code_blocks</span>
+                            <span class="preview-badge soon">Em desenvolvimento</span>
+                        </div>
                         <div class="card-body">
-                            <div class="card-label repo">📂 Repositorio Git</div>
+                            <div class="card-label repo"><span class="material-symbols-outlined" aria-hidden="true">folder_code</span>Repositório Git</div>
                             <div class="card-name">Tratamento de Dados</div>
-                            <p class="card-desc">Pipeline completo de limpeza, transformacao e feature engineering para previsao de vendas com decomposicao sazonal.</p>
-                            <span class="card-action">Ver codigo-fonte <span class="material-symbols-outlined">arrow_forward</span></span>
+                            <p class="card-desc">Pipeline completo de limpeza, transformação e feature engineering para previsão de vendas com decomposição sazonal.</p>
+                            <span class="card-action muted">Em breve <span class="material-symbols-outlined" aria-hidden="true">schedule</span></span>
                         </div>
                     </div>
-                </a>
-                <a class="card-wrapper" href="https://seu-app.streamlit.app" target="_blank">
+                </div>
+                <div class="card-wrapper">
                     <div class="card dash-card">
-                        <div class="card-preview" style="background:#ecfdf5;">📊</div>
+                        <div class="card-preview placeholder">
+                            <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+                            <span class="preview-badge soon">Em desenvolvimento</span>
+                        </div>
                         <div class="card-body">
-                            <div class="card-label dash">📈 Dashboard ao Vivo</div>
-                            <div class="card-name">Dashboard Interativa</div>
-                            <p class="card-desc">Painel executivo com drill-down por regiao, periodo e categoria de produto com intervalos de confianca.</p>
-                            <span class="card-action">Abrir dashboard <span class="material-symbols-outlined">open_in_new</span></span>
+                            <div class="card-label dash"><span class="material-symbols-outlined" aria-hidden="true">monitoring</span>Dashboard ao Vivo</div>
+                            <div class="card-name">Dashboard interativo</div>
+                            <p class="card-desc">Painel executivo com drill-down por região, período e categoria de produto com intervalos de confiança.</p>
+                            <span class="card-action muted">Em breve <span class="material-symbols-outlined" aria-hidden="true">schedule</span></span>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- ===== Projeto 2 ===== -->
-        <div class="project">
+        <!-- ===== Projeto 2: NLP (em desenvolvimento) ===== -->
+        <section class="project reveal">
             <div class="project-header">
-                <h3 class="project-title">Analise de Sentimentos - NLP</h3>
+                <h3 class="project-title">Análise de Sentimentos — NLP</h3>
                 <div class="project-tags">
                     <span class="tag">NLP</span>
                     <span class="tag">Transformers</span>
@@ -461,118 +132,43 @@
                 </div>
             </div>
             <div class="card-grid">
-                <a class="card-wrapper" href="https://github.com/seu-usuario/projeto-sentimentos" target="_blank">
+                <div class="card-wrapper">
                     <div class="card">
-                        <div class="card-preview" style="background:#e8f0fe;">💻</div>
+                        <div class="card-preview placeholder">
+                            <span class="material-symbols-outlined" aria-hidden="true">code_blocks</span>
+                            <span class="preview-badge soon">Em desenvolvimento</span>
+                        </div>
                         <div class="card-body">
-                            <div class="card-label repo">📂 Repositorio Git</div>
+                            <div class="card-label repo"><span class="material-symbols-outlined" aria-hidden="true">folder_code</span>Repositório Git</div>
                             <div class="card-name">Modelo e Scraping</div>
-                            <p class="card-desc">Modelo BERT fine-tuned para classificacao multiclasse de avaliacoes de clientes em 4 categorias de produto.</p>
-                            <span class="card-action">Ver codigo-fonte <span class="material-symbols-outlined">arrow_forward</span></span>
+                            <p class="card-desc">Modelo BERT fine-tuned para classificação multiclasse de avaliações de clientes em 4 categorias de produto.</p>
+                            <span class="card-action muted">Em breve <span class="material-symbols-outlined" aria-hidden="true">schedule</span></span>
                         </div>
                     </div>
-                </a>
-                <a class="card-wrapper" href="https://seu-app-sentimentos.streamlit.app" target="_blank">
+                </div>
+                <div class="card-wrapper">
                     <div class="card dash-card">
-                        <div class="card-preview" style="background:#ecfdf5;">📊</div>
+                        <div class="card-preview placeholder">
+                            <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+                            <span class="preview-badge soon">Em desenvolvimento</span>
+                        </div>
                         <div class="card-body">
-                            <div class="card-label dash">📈 Dashboard ao Vivo</div>
+                            <div class="card-label dash"><span class="material-symbols-outlined" aria-hidden="true">monitoring</span>Dashboard ao Vivo</div>
                             <div class="card-name">Painel de Insights</div>
-                            <p class="card-desc">Visualizacao de tendencias emocionais e nuvem de palavras para orientar estrategias de marketing.</p>
-                            <span class="card-action">Abrir dashboard <span class="material-symbols-outlined">open_in_new</span></span>
+                            <p class="card-desc">Visualização de tendências emocionais e nuvem de palavras para orientar estratégias de marketing.</p>
+                            <span class="card-action muted">Em breve <span class="material-symbols-outlined" aria-hidden="true">schedule</span></span>
                         </div>
                     </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- ===== Projeto 3 ===== -->
-        <div class="project">
-            <div class="project-header">
-                <h3 class="project-title">Analise de teste</h3>
-                <div class="project-tags">
-                    <span class="tag">NLP</span>
-                    <span class="tag">Transformers</span>
-                    <span class="tag">Scikit-learn</span>
                 </div>
             </div>
-            <div class="card-grid">
-                <a class="card-wrapper" href="https://github.com/seu-usuario/projeto-sentimentos" target="_blank">
-                    <div class="card">
-                        <div class="card-preview" style="background:#e8f0fe;">💻</div>
-                        <div class="card-body">
-                            <div class="card-label repo">📂 Repositorio Git</div>
-                            <div class="card-name">teste</div>
-                            <p class="card-desc">sdfjhsdkfjhksjdfhjshdfsdf dsfdsfsd f sdfsdfsdfsdfsd .</p>
-                            <span class="card-action">Ver codigo-fonte <span class="material-symbols-outlined">arrow_forward</span></span>
-                        </div>
-                    </div>
-                </a>
-                <a class="card-wrapper" href="https://seu-app-sentimentos.streamlit.app" target="_blank">
-                    <div class="card dash-card">
-                        <div class="card-preview" style="background:#ecfdf5;">📊</div>
-                        <div class="card-body">
-                            <div class="card-label dash">📈 Dashboard ao Vivo</div>
-                            <div class="card-name">Painel de Insights</div>
-                            <p class="card-desc">Visualizacao de tendencias emocionais e nuvem de palavras para orientar estrategias de marketing.</p>
-                            <span class="card-action">Abrir dashboard <span class="material-symbols-outlined">open_in_new</span></span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!-- Footer -->
-        <footer>
-            &copy; 2026 Alisson Moreira &middot; Portfólio de Analista de Dados
-        </footer>
+        </section>
     </main>
 
-    <script>
-        /* ===== TEMA CLARO / ESCURO ===== */
-        const html = document.documentElement;
-        const toggle = document.getElementById('theme-toggle');
+    <!-- Rodapé -->
+    <footer>
+        &copy; 2026 Alisson Moreira &middot; Portfólio de Analista de Dados
+    </footer>
 
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.replace('light', 'dark');
-        }
-
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            html.classList.toggle('light');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        });
-
-        /* ===== COPIAR E-MAIL ===== */
-        document.getElementById('copy-email').addEventListener('click', () => {
-            const email = 'am.analistadedados@gmail.com';
-            navigator.clipboard.writeText(email).catch(() => {
-                const ta = document.createElement('textarea');
-                ta.value = email;
-                ta.style.position = 'fixed';
-                ta.style.left = '-9999px';
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-            });
-            const badge = document.getElementById('copy-badge');
-            badge.classList.add('show');
-            setTimeout(() => badge.classList.remove('show'), 2000);
-        });
-
-        /* ===== MOBILE SIDEBAR ===== */
-        const hamburger = document.getElementById('hamburger');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        });
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('open');
-        });
-    </script>
+    <script src="assets/app.js"></script>
 </body>
 </html>

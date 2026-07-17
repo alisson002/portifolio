@@ -4,460 +4,87 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sobre Mim | Alisson Moreira - Analista de Dados</title>
+    <meta name="description" content="Quem é Alisson Moreira: analista de dados com experiência em tratamento, modelagem e visualização de dados com Python, Pandas e SQL."/>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"/>
+    <script>
+        // Aplica o tema salvo antes da primeira pintura (evita "flash")
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.replace('light', 'dark');
+            }
+        } catch (e) { /* localStorage indisponível (modo privado etc.) */ }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <style>
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #2a3439;
-            background-color: #F8FAFC;
-            transition: background-color 0.4s, color 0.4s;
-        }
-        .dark body { background-color: #06101b; color: #e2e8f0; }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        /* ========== SIDEBAR ========== */
-        aside {
-            height: 100vh;
-            width: 280px;
-            position: fixed;
-            left: 0; top: 0;
-            background: #06101b;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 1.5rem 1.5rem;
-            z-index: 40;
-            overflow-y: auto;
-            transition: transform 0.3s;
-        }
-        .sidebar-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        .sidebar-photo {
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #0077D4;
-            box-shadow: 0 4px 20px rgba(0,119,212,0.3);
-            margin-bottom: 1rem;
-        }
-        .sidebar-name {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #0077D4;
-        }
-        .sidebar-role {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 0.25rem;
-        }
-
-        aside hr {
-            border: none;
-            border-top: 1px solid #1e293b;
-            margin: 1rem 0;
-        }
-        .sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-        .sidebar-nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 0.65rem 1rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .sidebar-nav a:hover { background: rgba(0,119,212,0.1); color: #e2e8f0; }
-        .sidebar-nav a.active {
-            background: rgba(0,119,212,0.15);
-            color: #7cc4ff;
-            font-weight: 600;
-        }
-        .sidebar-nav a .material-symbols-outlined { font-size: 1.2rem; }
-
-        .sidebar-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            border-top: 1px solid #1e293b;
-            padding-top: 1rem;
-            margin-top: auto;
-        }
-        .sidebar-bottom a,
-        .sidebar-bottom .copy-email-btn {
-            color: #94a3b8;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-family: inherit;
-            width: 100%;
-            position: relative;
-        }
-        .sidebar-bottom a:hover,
-        .sidebar-bottom .copy-email-btn:hover {
-            color: #0077D4;
-            background: rgba(0,119,212,0.08);
-        }
-        .sidebar-bottom .material-symbols-outlined { font-size: 1.1rem; }
-
-        .copy-badge {
-            position: absolute;
-            top: -6px; right: 8px;
-            background: #059669;
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: all 0.3s;
-            pointer-events: none;
-        }
-        .copy-badge.show { opacity: 1; transform: translateY(0); }
-
-        /* ========== MAIN CONTENT ========== */
-        main {
-            margin-left: 280px;
-            padding: 3rem;
-            min-height: 100vh;
-        }
-
-        /* ========== SOBRE MIM ========== */
-        .about-container {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .about-header {
-            margin-bottom: 2.5rem;
-        }
-        .about-label {
-            color: #0077D4;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-        }
-        .about-title {
-            font-family: 'Manrope', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #06101b;
-            line-height: 1.2;
-        }
-        .dark .about-title { color: #f1f5f9; }
-
-        .about-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        .dark .about-card {
-            background: #0f1d32;
-            border-color: #1e293b;
-        }
-
-        .about-card h3 {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #06101b;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .dark .about-card h3 { color: #f1f5f9; }
-        .about-card h3 .material-symbols-outlined {
-            color: #0077D4;
-            font-size: 1.3rem;
-        }
-
-        .about-text {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #475569;
-            text-align: justify;
-            hyphens: auto;
-        }
-        .dark .about-text { color: #94a3b8; }
-        .about-text strong { color: #06101b; }
-        .dark .about-text strong { color: #e2e8f0; }
-
-        /* -- Skills -- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-        .skill-item {
-            background: #F8FAFC;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #475569;
-            transition: all 0.2s;
-        }
-        .skill-item:hover {
-            border-color: #0077D4;
-            color: #0077D4;
-            transform: translateY(-2px);
-        }
-        .dark .skill-item {
-            background: #06101b;
-            border-color: #1e293b;
-            color: #94a3b8;
-        }
-        .dark .skill-item:hover {
-            border-color: #0077D4;
-            color: #0077D4;
-        }
-
-        /* -- Contact items -- */
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0.85rem 1.1rem;
-            border-radius: 10px;
-            background: #F8FAFC;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-        }
-        .contact-item:hover {
-            border-color: #0077D4;
-            transform: translateX(4px);
-        }
-        .dark .contact-item {
-            background: #06101b;
-            border-color: #1e293b;
-        }
-        .dark .contact-item:hover { border-color: #0077D4; }
-
-        .contact-icon {
-            width: 38px; height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .contact-icon.email-icon { background: rgba(0,119,212,0.1); }
-        .contact-icon.github-icon { background: rgba(71,85,105,0.1); }
-        .dark .contact-icon.github-icon { background: rgba(255,255,255,0.06); }
-        .contact-icon.linkedin-icon { background: rgba(10,102,194,0.1); }
-        .contact-icon.location-icon { background: rgba(239,68,68,0.08); }
-        .contact-icon .material-symbols-outlined { font-size: 1.2rem; color: #0077D4; }
-        .contact-icon.github-icon .material-symbols-outlined { color: #475569; }
-        .dark .contact-icon.github-icon .material-symbols-outlined { color: #94a3b8; }
-        .contact-icon.location-icon .material-symbols-outlined { color: #ef4444; }
-
-        .contact-info { display: flex; flex-direction: column; }
-        .contact-info-label {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #757491;
-            margin-bottom: 2px;
-        }
-        .contact-info-value {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #06101b;
-        }
-        .dark .contact-info-value { color: #e2e8f0; }
-
-        .contact-copy-badge {
-            position: absolute;
-            top: -6px; right: 10px;
-            background: #059669;
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: all 0.3s;
-            pointer-events: none;
-        }
-        .contact-copy-badge.show { opacity: 1; transform: translateY(0); }
-
-        /* ========== FOOTER ========== */
-        footer {
-            margin-left: 280px;
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid #e2e8f0;
-            color: #757491;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-        .dark footer { border-color: #1e293b; color: #64748b; }
-
-        /* ========== THEME TOGGLE ========== */
-        .theme-toggle {
-            position: fixed;
-            top: 1.25rem; right: 1.5rem;
-            z-index: 50;
-            background: #e2e8f0;
-            border: none;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .dark .theme-toggle { background: #1e293b; }
-        .theme-toggle .material-symbols-outlined { color: #475569; font-size: 1.3rem; }
-        .dark .theme-toggle .material-symbols-outlined { color: #94a3b8; }
-        .theme-toggle .icon-light { display: none; }
-        .dark .theme-toggle .icon-dark { display: none; }
-        .dark .theme-toggle .icon-light { display: block; }
-
-        /* ========== MOBILE ========== */
-        .hamburger {
-            display: none;
-            position: fixed;
-            top: 1.25rem; left: 1rem;
-            z-index: 60;
-            background: #0077D4;
-            border: none;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .hamburger .material-symbols-outlined { color: #fff; font-size: 1.5rem; }
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 35;
-        }
-
-        @media (max-width: 768px) {
-            aside { transform: translateX(-100%); }
-            aside.open { transform: translateX(0); }
-            .sidebar-overlay.open { display: block; }
-            .hamburger { display: flex; }
-            main { margin-left: 0; padding: 4.5rem 1.25rem 2rem; }
-            footer { margin-left: 0; }
-        }
-    </style>
+    <link href="assets/style.css" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
-        <span class="material-symbols-outlined icon-dark">dark_mode</span>
-        <span class="material-symbols-outlined icon-light">light_mode</span>
-    </button>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <!-- Mobile Hamburger -->
-    <button class="hamburger" id="hamburger">
-        <span class="material-symbols-outlined">menu</span>
+    <!-- Menu mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
     </button>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- Sidebar -->
     <aside id="sidebar">
         <div class="sidebar-profile">
-            <img class="sidebar-photo" src="alisson.jpeg" alt="Alisson Moreira"/>
+            <img class="sidebar-photo" src="alisson.jpeg" alt="Foto de Alisson Moreira"/>
             <h1 class="sidebar-name">Alisson Moreira</h1>
             <p class="sidebar-role">Analista de Dados</p>
         </div>
 
         <hr/>
 
-        <nav class="sidebar-nav">
+        <nav class="sidebar-nav" aria-label="Navegação principal">
             <a href="index.html">
-                <span class="material-symbols-outlined">grid_view</span>
+                <span class="material-symbols-outlined" aria-hidden="true">grid_view</span>
                 Portfólio
             </a>
-            <a href="sobre.html" class="active">
-                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">person</span>
+            <a href="sobre.html" class="active" aria-current="page">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;" aria-hidden="true">person</span>
                 Sobre Mim
             </a>
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="https://github.com/alisson002" target="_blank">
-                <span class="material-symbols-outlined">code</span>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+                <span class="material-symbols-outlined icon-dark" aria-hidden="true">dark_mode</span>
+                <span class="material-symbols-outlined icon-light" aria-hidden="true">light_mode</span>
+                <span class="icon-dark">Tema escuro</span>
+                <span class="icon-light">Tema claro</span>
+            </button>
+            <a href="https://github.com/alisson002" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                 GitHub
             </a>
-            <a href="https://linkedin.com/in/seu-perfil" target="_blank">
-                <span class="material-symbols-outlined">share</span>
+            <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
                 LinkedIn
             </a>
-            <button class="copy-email-btn" id="copy-email-sidebar" type="button">
-                <span class="material-symbols-outlined">mail</span>
+            <button class="copy-email-btn" type="button" data-copy-email="am.analistadedados@gmail.com">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                 am.analistadedados@gmail.com
-                <span class="copy-badge" id="copy-badge-sidebar">Copiado!</span>
+                <span class="copy-badge">Copiado!</span>
             </button>
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main>
+    <!-- Conteúdo -->
+    <main id="conteudo">
         <div class="about-container">
-            <div class="about-header">
-                <p class="about-label">Sobre Mim</p>
-                <h2 class="about-title">Alisson Moreira</h2>
-            </div>
+            <header class="about-header page-header reveal">
+                <p class="page-label">Sobre Mim</p>
+                <h2 class="page-title">Alisson Moreira</h2>
+            </header>
 
             <!-- Quem sou eu -->
-            <div class="about-card">
+            <div class="about-card reveal">
                 <h3>
-                    <span class="material-symbols-outlined">badge</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">badge</span>
                     Quem sou eu
                 </h3>
                 <p class="about-text">
@@ -465,14 +92,14 @@
                     <strong>modelagem</strong> e <strong>visualização de dados</strong>.
                     Transformo bases brutas em insights acionáveis através de pipelines
                     em <strong>Python</strong>, <strong>Pandas</strong> e <strong>SQL</strong>,
-                    além de dashboards interativas.
+                    além de dashboards interativos.
                 </p>
             </div>
 
             <!-- Habilidades -->
-            <div class="about-card">
+            <div class="about-card reveal">
                 <h3>
-                    <span class="material-symbols-outlined">build</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">build</span>
                     Ferramentas e Tecnologias
                 </h3>
                 <div class="skills-grid">
@@ -488,34 +115,34 @@
             </div>
 
             <!-- Contato -->
-            <div class="about-card">
+            <div class="about-card reveal">
                 <h3>
-                    <span class="material-symbols-outlined">alternate_email</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">alternate_email</span>
                     Contato
                 </h3>
                 <div class="contact-list">
-                    <div class="contact-item" id="copy-email-about" style="cursor:pointer;">
+                    <div class="contact-item" data-copy-email="am.analistadedados@gmail.com" style="cursor:pointer;">
                         <div class="contact-icon email-icon">
-                            <span class="material-symbols-outlined">mail</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                         </div>
                         <div class="contact-info">
                             <span class="contact-info-label">E-mail &middot; clique para copiar</span>
                             <span class="contact-info-value">am.analistadedados@gmail.com</span>
                         </div>
-                        <span class="contact-copy-badge" id="copy-badge-about">Copiado!</span>
+                        <span class="contact-copy-badge copy-badge">Copiado!</span>
                     </div>
-                    <a class="contact-item" href="https://github.com/alisson002" target="_blank">
+                    <a class="contact-item" href="https://github.com/alisson002" target="_blank" rel="noopener">
                         <div class="contact-icon github-icon">
-                            <span class="material-symbols-outlined">code</span>
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                         </div>
                         <div class="contact-info">
                             <span class="contact-info-label">GitHub</span>
                             <span class="contact-info-value">alisson002</span>
                         </div>
                     </a>
-                    <a class="contact-item" href="https://linkedin.com/in/seu-perfil" target="_blank">
+                    <a class="contact-item" href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener">
                         <div class="contact-icon linkedin-icon">
-                            <span class="material-symbols-outlined">share</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
                         </div>
                         <div class="contact-info">
                             <span class="contact-info-label">LinkedIn</span>
@@ -524,7 +151,7 @@
                     </a>
                     <div class="contact-item" style="cursor:default;">
                         <div class="contact-icon location-icon">
-                            <span class="material-symbols-outlined">location_on</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
                         </div>
                         <div class="contact-info">
                             <span class="contact-info-label">Localização</span>
@@ -536,59 +163,11 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Rodapé -->
     <footer>
         &copy; 2026 Alisson Moreira &middot; Portfólio de Analista de Dados
     </footer>
 
-    <script>
-        /* ===== TEMA ===== */
-        const html = document.documentElement;
-        const toggle = document.getElementById('theme-toggle');
-
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.replace('light', 'dark');
-        }
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            html.classList.toggle('light');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        });
-
-        /* ===== COPIAR E-MAIL (helper) ===== */
-        function copyEmail(badgeId) {
-            const email = 'am.analistadedados@gmail.com';
-            navigator.clipboard.writeText(email).catch(() => {
-                const ta = document.createElement('textarea');
-                ta.value = email;
-                ta.style.position = 'fixed';
-                ta.style.left = '-9999px';
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-            });
-            const badge = document.getElementById(badgeId);
-            badge.classList.add('show');
-            setTimeout(() => badge.classList.remove('show'), 2000);
-        }
-
-        document.getElementById('copy-email-sidebar').addEventListener('click', () => copyEmail('copy-badge-sidebar'));
-        document.getElementById('copy-email-about').addEventListener('click', () => copyEmail('copy-badge-about'));
-
-        /* ===== MOBILE SIDEBAR ===== */
-        const hamburger = document.getElementById('hamburger');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        });
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('open');
-        });
-    </script>
+    <script src="assets/app.js"></script>
 </body>
 </html>
